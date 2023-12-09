@@ -1,9 +1,10 @@
+import 'package:UReflect/moduels/view/HomePage.dart';
+
 import 'product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../main.dart';
 import '../../view/loginPage.dart';
-import '../bottomnavigator.dart';
 import '../product_cart/cart_item.dart';
 import 'detailedproduct.dart';
 
@@ -21,12 +22,12 @@ class CartScreen extends StatelessWidget {
         centerTitle: true,
         leading: IconButton(
             onPressed: () => Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const Home1())),
+                MaterialPageRoute(builder: (context) => MainHomeScreen())),
             icon: const Icon(Icons.arrow_back_ios)),
         actions: [
           IconButton(
               onPressed: () => Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const Home1())),
+                  MaterialPageRoute(builder: (context) => MainHomeScreen())),
               icon: const Icon(Icons.delete_outline)),
         ],
       ),

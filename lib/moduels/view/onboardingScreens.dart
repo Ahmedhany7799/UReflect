@@ -5,7 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../widgets/bottomnavigator.dart';
+import '../widgets/bottomnavigationbar.dart';
+import 'HomePage.dart';
 import 'onBoarding_controller.dart';
 
 class OnboardingScreens extends StatefulWidget {
@@ -47,8 +48,10 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
               right: 20,
               top: 60,
               child: TextButton(
-                  onPressed: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Home1())),
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const BottomNavigationbar())),
                   child: const Text(
                     "Skip",
                     style: TextStyle(color: Colors.black),

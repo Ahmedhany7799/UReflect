@@ -16,6 +16,7 @@ import 'SearchPage2.dart';
 // ignore: must_be_immutable
 class MainHomeScreen extends StatefulWidget {
   const MainHomeScreen({Key? key}) : super(key: key);
+
   static List previousSearches = [];
 
   @override
@@ -28,475 +29,474 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Image(
-              //   image: AssetImage("assets/logo.png"),
-              //   width: 35,
-              //   height: 35,
-              // ),
-              Text(
-                "Reflect",
-                style: TextStyle(
-                    fontSize: 30.sp,
-                    fontWeight: FontWeight.bold,
-                    color: const Color.fromRGBO(10, 207, 131, 1)),
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Image(
+            //   image: AssetImage("assets/logo.png"),
+            //   width: 35,
+            //   height: 35,
+            // ),
+            Text(
+              "Reflect",
+              style: TextStyle(
+                  fontSize: 30.sp,
+                  fontWeight: FontWeight.bold,
+                  color: const Color.fromRGBO(10, 207, 131, 1)),
+            ),
+          ],
+        ),
+        centerTitle: true,
+        actions: [
+          Stack(children: [
+            Positioned(
+              child: IconButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CartScreen()));
+                },
+                icon: const Icon(
+                  Icons.shopping_cart_outlined,
+                  size: 25,
+                ),
               ),
-            ],
-          ),
-          centerTitle: true,
-          actions: [
-            Stack(children: [
-              Positioned(
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
+            ),
+            Positioned(
+                right: 0,
+                child: Container(
+                    width: 19,
+                    height: 17,
+                    decoration: const BoxDecoration(
+                      color: Color.fromRGBO(10, 207, 131, 1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: Center(
+                        child: userToken == null
+                            ? Text(
+                                "",
+                                style: TextStyle(
+                                    fontSize: 13.sp, color: Colors.white),
+                              )
+                            : Text(
+                                "7",
+                                style: TextStyle(
+                                    fontSize: 13.sp, color: Colors.white),
+                              ))))
+          ]),
+        ],
+        automaticallyImplyLeading: false,
+      ),
+      //backgroundColor: const Color(0xfFE9EBEA),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Hello !",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.sp,
+                ),
+              ),
+              Text(
+                "What are you looking for today?",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30.sp,
+                ),
+              ),
+
+              SizedBox(
+                height: 20.h,
+              ),
+
+              Row(
+                children: [
+                  InkWell(
+                    onTap: () => Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const CartScreen()));
-                  },
-                  icon: const Icon(
-                    Icons.shopping_cart_outlined,
-                    size: 25,
+                            builder: (context) => const SearchPage2())),
+                    child: SizedBox(
+                      width: 350.w,
+                      child: const TSearchContainer(
+                        text: "Search yaa bashaa...",
+                        enabled: false,
+                      ),
+                    ),
                   ),
-                ),
+                  IconButton(
+                    onPressed: () {
+                      showModalBottomSheet(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return SizedBox(
+                              height: 700.h,
+                              child: Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Filter",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 30.sp,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 10.h,
+                                      ),
+                                      Text(
+                                        "Categories",
+                                        style: TextStyle(
+                                            fontSize: 20.sp,
+                                            color: Colors.black),
+                                      ),
+                                      SizedBox(
+                                        height: 2.h,
+                                      ),
+
+                                      const Categories(),
+                                      Text('Sort by',
+                                          style: TextStyle(fontSize: 20.sp)),
+                                      SizedBox(
+                                        height: 5.h,
+                                      ),
+
+                                      const FilterChipExample(),
+                                      //  filt2(),
+                                      Text(
+                                        "Price Range",
+                                        style: TextStyle(
+                                            //fontWeight: FontWeight.bold,
+                                            fontSize: 20.sp,
+                                            color: Colors.black),
+                                      ),
+                                      SizedBox(
+                                        height: 5.h,
+                                      ),
+
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: TextFormField(
+                                              controller: intController,
+                                              decoration: InputDecoration(
+                                                labelText: "Min Price",
+                                                labelStyle: TextStyle(
+                                                  color: Colors.black,
+                                                  //fontWeight: FontWeight.bold,
+                                                  fontSize: 15.sp,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 8.w,
+                                          ),
+                                          Expanded(
+                                            child: TextFormField(
+                                              controller: intController,
+                                              decoration: InputDecoration(
+                                                labelText: "max Price",
+                                                labelStyle: TextStyle(
+                                                  color: Colors.black,
+                                                  // fontWeight: FontWeight.bold,
+                                                  fontSize: 15.sp,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 5.h,
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(19),
+                                          color: const Color.fromRGBO(
+                                              10, 207, 131, 1),
+                                        ),
+                                        child: MaterialButton(
+                                          onPressed: () {},
+                                          minWidth: double.infinity,
+                                          child: Text(
+                                            "Apply Filter",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20.sp,
+                                                color: Colors.white),
+                                          ),
+                                        ),
+                                      ),
+                                    ]),
+                              ),
+                            );
+                          });
+                    },
+                    icon: const Icon(Icons.sort),
+                    iconSize: 35,
+                  ),
+                ],
               ),
-              Positioned(
-                  right: 0,
-                  child: Container(
-                      width: 19,
-                      height: 17,
-                      decoration: const BoxDecoration(
-                        color: Color.fromRGBO(10, 207, 131, 1),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Center(
-                          child: userToken == null
-                              ? Text(
-                                  "",
-                                  style: TextStyle(
-                                      fontSize: 13.sp, color: Colors.white),
-                                )
-                              : Text(
-                                  "7",
-                                  style: TextStyle(
-                                      fontSize: 13.sp, color: Colors.white),
-                                ))))
-            ]),
-          ],
-          automaticallyImplyLeading: false,
-        ),
-        //backgroundColor: const Color(0xfFE9EBEA),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Hello !",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.sp,
-                  ),
-                ),
-                Text(
-                  "What are you looking for today?",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30.sp,
-                  ),
-                ),
+              SizedBox(
+                height: 20.h,
+              ),
 
-                SizedBox(
-                  height: 20.h,
-                ),
-
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: () => Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SearchPage2())),
-                      child: SizedBox(
-                        width: 350.w,
-                        child: const TSearchContainer(
-                          text: "Search yaa bashaa...",
-                          enabled: false,
-                        ),
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        showModalBottomSheet(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return SizedBox(
-                                height: 700.h,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(20.0),
-                                  child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "Filter",
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 30.sp,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 10.h,
-                                        ),
-                                        Text(
-                                          "Categories",
-                                          style: TextStyle(
-                                              fontSize: 20.sp,
-                                              color: Colors.black),
-                                        ),
-                                        SizedBox(
-                                          height: 2.h,
-                                        ),
-
-                                        const Categories(),
-                                        Text('Sort by',
-                                            style: TextStyle(fontSize: 20.sp)),
-                                        SizedBox(
-                                          height: 5.h,
-                                        ),
-
-                                        const FilterChipExample(),
-                                        //  filt2(),
-                                        Text(
-                                          "Price Range",
-                                          style: TextStyle(
-                                              //fontWeight: FontWeight.bold,
-                                              fontSize: 20.sp,
-                                              color: Colors.black),
-                                        ),
-                                        SizedBox(
-                                          height: 5.h,
-                                        ),
-
-                                        Row(
-                                          children: [
-                                            Expanded(
-                                              child: TextFormField(
-                                                controller: intController,
-                                                decoration: InputDecoration(
-                                                  labelText: "Min Price",
-                                                  labelStyle: TextStyle(
-                                                    color: Colors.black,
-                                                    //fontWeight: FontWeight.bold,
-                                                    fontSize: 15.sp,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 8.w,
-                                            ),
-                                            Expanded(
-                                              child: TextFormField(
-                                                controller: intController,
-                                                decoration: InputDecoration(
-                                                  labelText: "max Price",
-                                                  labelStyle: TextStyle(
-                                                    color: Colors.black,
-                                                    // fontWeight: FontWeight.bold,
-                                                    fontSize: 15.sp,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 5.h,
-                                        ),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(19),
-                                            color: const Color.fromRGBO(
-                                                10, 207, 131, 1),
-                                          ),
-                                          child: MaterialButton(
-                                            onPressed: () {},
-                                            minWidth: double.infinity,
-                                            child: Text(
-                                              "Apply Filter",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20.sp,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ),
-                                      ]),
-                                ),
-                              );
-                            });
-                      },
-                      icon: const Icon(Icons.sort),
-                      iconSize: 35,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        "   Popular Categories",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 17.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.left,
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: SizedBox(
-                    height: 80.h,
-                    child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: 1,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Row(
-                            children: const [
-                              CategorieCard(
-                                image: 'assets/CategoriesIcon/shirt.png',
-                                type: "T-Shirt",
-                              ),
-                              CategorieCard(
-                                image: 'assets/CategoriesIcon/jeans.png',
-                                type: "Jeans",
-                              ),
-                              CategorieCard(
-                                image: 'assets/CategoriesIcon/jacket.png',
-                                type: "Jacket",
-                              ),
-                              CategorieCard(
-                                image: 'assets/CategoriesIcon/dress.png',
-                                type: "dress",
-                              ),
-                              CategorieCard(
-                                image: 'assets/CategoriesIcon/shose.png',
-                                type: "Shose",
-                              ),
-                              CategorieCard(
-                                image:
-                                    'assets/CategoriesIcon/icons8-bowling-game-100.png',
-                                type: "Sport",
-                              ),
-                              CategorieCard(
-                                image: 'assets/icons/coupon.png',
-                                type: "Coupons",
-                              ),
-                            ],
-                          );
-                        }),
-                  ),
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: CarouselSlider(
-                      items: const [
-                        BannerImage(
-                          banImg: 'assets/products/promo-banner-1.png',
-                        ),
-                        BannerImage(
-                          banImg: 'assets/products/promo-banner-2.png',
-                        ),
-                        BannerImage(
-                          banImg: 'assets/products/promo-banner-3.png',
-                        ),
-                      ],
-                      options: CarouselOptions(
-                        viewportFraction: 2,
-                        autoPlay: true,
-                      )),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    for (int i = 0; i < 3; i++)
-                      CircullerContainer(
-                        width: 25.w,
-                        height: 5.h,
-                        margin: const EdgeInsets.only(right: 10),
-                        backgroundColor: const Color.fromRGBO(10, 207, 131, 1),
-                      ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "Trends",
+                      "   Popular Categories",
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 15.sp,
+                        fontSize: 17.sp,
                         fontWeight: FontWeight.bold,
                       ),
+                      textAlign: TextAlign.left,
                     ),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const ViewAllProducts()));
-                        },
-                        child: Text(
-                          "view all",
-                          style: TextStyle(
-                              fontSize: 17.sp, color: Colors.blueGrey),
-                        )),
                   ],
                 ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: SizedBox(
+                  height: 80.h,
+                  child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: 1,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Row(
+                          children: const [
+                            CategorieCard(
+                              image: 'assets/CategoriesIcon/shirt.png',
+                              type: "T-Shirt",
+                            ),
+                            CategorieCard(
+                              image: 'assets/CategoriesIcon/jeans.png',
+                              type: "Jeans",
+                            ),
+                            CategorieCard(
+                              image: 'assets/CategoriesIcon/jacket.png',
+                              type: "Jacket",
+                            ),
+                            CategorieCard(
+                              image: 'assets/CategoriesIcon/dress.png',
+                              type: "dress",
+                            ),
+                            CategorieCard(
+                              image: 'assets/CategoriesIcon/shose.png',
+                              type: "Shose",
+                            ),
+                            CategorieCard(
+                              image:
+                                  'assets/CategoriesIcon/icons8-bowling-game-100.png',
+                              type: "Sport",
+                            ),
+                            CategorieCard(
+                              image: 'assets/icons/coupon.png',
+                              type: "Coupons",
+                            ),
+                          ],
+                        );
+                      }),
+                ),
+              ),
 
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: GridView.builder(
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    physics: const ScrollPhysics(),
-                    itemCount: products.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 20,
-                      crossAxisSpacing: 20,
-                      childAspectRatio: 0.75,
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: CarouselSlider(
+                    items: const [
+                      BannerImage(
+                        banImg: 'assets/products/promo-banner-1.png',
+                      ),
+                      BannerImage(
+                        banImg: 'assets/products/promo-banner-2.png',
+                      ),
+                      BannerImage(
+                        banImg: 'assets/products/promo-banner-3.png',
+                      ),
+                    ],
+                    options: CarouselOptions(
+                      viewportFraction: 2,
+                      autoPlay: true,
+                    )),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  for (int i = 0; i < 3; i++)
+                    CircullerContainer(
+                      width: 25.w,
+                      height: 5.h,
+                      margin: const EdgeInsets.only(right: 10),
+                      backgroundColor: const Color.fromRGBO(10, 207, 131, 1),
                     ),
-                    itemBuilder: (context, index) => ItemCard(
-                      product: products[index],
-                      press: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetailsScreen(
-                            product: products[index],
-                          ),
+                ],
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Trends",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ViewAllProducts()));
+                      },
+                      child: Text(
+                        "view all",
+                        style:
+                            TextStyle(fontSize: 17.sp, color: Colors.blueGrey),
+                      )),
+                ],
+              ),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: GridView.builder(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  physics: const ScrollPhysics(),
+                  itemCount: products.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 20,
+                    crossAxisSpacing: 20,
+                    childAspectRatio: 0.75,
+                  ),
+                  itemBuilder: (context, index) => ItemCard(
+                    product: products[index],
+                    press: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailsScreen(
+                          product: products[index],
                         ),
                       ),
                     ),
                   ),
                 ),
+              ),
 
-                // CurvedEdgeWidget(
-                //   child: Container(
-                //     color: const Color.fromRGBO(0, 101, 111, 1),
-                //     child: SizedBox(
-                //       height: 350,
-                //       child: Stack(
-                //         children: [
-                //           Positioned(
-                //             top: -200,
-                //             right: -250,
-                //             child: CircullerContainer(
-                //               backgroundColor: Colors.white.withOpacity(0.1),
-                //             ),
-                //           ),
-                //           Positioned(
-                //             top: 40,
-                //             right: -300,
-                //             child: CircullerContainer(
-                //               backgroundColor: Colors.white.withOpacity(0.1),
-                //             ),
-                //           ),
-                //           Column(
-                //             children: [
-                //               TAppBar(
-                //                 title: Column(
-                //                   mainAxisAlignment: MainAxisAlignment.start,
-                //                   children: const [
-                //                     Text(
-                //                       "Hello !",
-                //                       textAlign: TextAlign.center,
-                //                       style: TextStyle(
-                //                         color: Colors.grey,
-                //                         fontWeight: FontWeight.bold,
-                //                         fontSize: 12,
-                //                       ),
-                //                     ),
-                //                     Text(
-                //                       "Ahmed Hany",
-                //                       style: TextStyle(
-                //                         color: Colors.white,
-                //                         fontWeight: FontWeight.bold,
-                //                         fontSize: 20,
-                //                       ),
-                //                     ),
-                //                   ],
-                //                 ),
-                //                 actions: [
-                //                   Stack(
-                //                     children:[ IconButton( onPressed: () {  }, icon: const Icon(Icons.shopping_bag,size: 25,color: Colors.white,),
+              // CurvedEdgeWidget(
+              //   child: Container(
+              //     color: const Color.fromRGBO(0, 101, 111, 1),
+              //     child: SizedBox(
+              //       height: 350,
+              //       child: Stack(
+              //         children: [
+              //           Positioned(
+              //             top: -200,
+              //             right: -250,
+              //             child: CircullerContainer(
+              //               backgroundColor: Colors.white.withOpacity(0.1),
+              //             ),
+              //           ),
+              //           Positioned(
+              //             top: 40,
+              //             right: -300,
+              //             child: CircullerContainer(
+              //               backgroundColor: Colors.white.withOpacity(0.1),
+              //             ),
+              //           ),
+              //           Column(
+              //             children: [
+              //               TAppBar(
+              //                 title: Column(
+              //                   mainAxisAlignment: MainAxisAlignment.start,
+              //                   children: const [
+              //                     Text(
+              //                       "Hello !",
+              //                       textAlign: TextAlign.center,
+              //                       style: TextStyle(
+              //                         color: Colors.grey,
+              //                         fontWeight: FontWeight.bold,
+              //                         fontSize: 12,
+              //                       ),
+              //                     ),
+              //                     Text(
+              //                       "Ahmed Hany",
+              //                       style: TextStyle(
+              //                         color: Colors.white,
+              //                         fontWeight: FontWeight.bold,
+              //                         fontSize: 20,
+              //                       ),
+              //                     ),
+              //                   ],
+              //                 ),
+              //                 actions: [
+              //                   Stack(
+              //                     children:[ IconButton( onPressed: () {  }, icon: const Icon(Icons.shopping_bag,size: 25,color: Colors.white,),
 
-                //                     ),
+              //                     ),
 
-                //                   Positioned(
-                //                    right: 0,
-                //                     child: Container(
-                //                       width: 19,
-                //                       height: 17,
-                //                     decoration: const BoxDecoration(
-                //                       color: Colors.black,
-                //                       shape: BoxShape.circle,
-                //                     ),
-                //                     child: const Center(child: Text("2",style: TextStyle(fontSize: 13,color: Colors.white),))))
-                //                    ] ),
-                //                 ],
+              //                   Positioned(
+              //                    right: 0,
+              //                     child: Container(
+              //                       width: 19,
+              //                       height: 17,
+              //                     decoration: const BoxDecoration(
+              //                       color: Colors.black,
+              //                       shape: BoxShape.circle,
+              //                     ),
+              //                     child: const Center(child: Text("2",style: TextStyle(fontSize: 13,color: Colors.white),))))
+              //                    ] ),
+              //                 ],
 
-                //               ),
+              //               ),
 
-                //               const TSearchContainer(
-                //                 text: "Search yaa bashaa...",
-                //               ),
+              //               const TSearchContainer(
+              //                 text: "Search yaa bashaa...",
+              //               ),
 
-                //             ],
-                //           )
-                //         ],
-                //       ),
-                //     ),
-                //   ),
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.all(20.0),
-                //   child: Column(
-                //     children: [
+              //             ],
+              //           )
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              // Padding(
+              //   padding: const EdgeInsets.all(20.0),
+              //   child: Column(
+              //     children: [
 
-                //     ],
-                //   ),
-                // )
-              ],
-            ),
+              //     ],
+              //   ),
+              // )
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
 

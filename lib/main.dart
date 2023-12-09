@@ -1,5 +1,6 @@
 import 'package:lottie/lottie.dart';
 
+import 'moduels/view/WelcomeLoginPage.dart';
 import 'services/autntication/authcubit/authcubit_cubit.dart';
 import 'services/layout/layout_cubit/layout_cubit.dart';
 import 'services/sharedprefernces/Cachedata.dart';
@@ -84,14 +85,12 @@ class _MyAppState extends State<MyApp> {
                     child: AnimatedSplashScreen(
                       duration: 4000,
                       splashIconSize: 400,
-                      splash: Lottie.asset(
-                        "assets/animations/logo.json",
-                        reverse: true,
-                        repeat: true,
+                      splash: Image.asset(
+                        "assets/user.png",
                         fit: BoxFit.cover,
                         height: 400.h,
                       ),
-                      nextScreen: const WelcomePage(),
+                      nextScreen: const WelcomeLogin(),
                       splashTransition: SplashTransition.fadeTransition,
                     ),
                   ),

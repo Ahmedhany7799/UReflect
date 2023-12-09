@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../widgets/componants/detailedproduct.dart';
 import '../widgets/componants/itemCard.dart';
 import '../widgets/componants/product_model.dart';
-import '../widgets/bottomnavigator.dart';
+import 'HomePage.dart';
 
 class ViewAllProducts extends StatelessWidget {
   const ViewAllProducts({super.key});
@@ -24,7 +24,7 @@ class ViewAllProducts extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Home1()),
+                MaterialPageRoute(builder: (context) => MainHomeScreen()),
               );
             },
             icon: const Icon(

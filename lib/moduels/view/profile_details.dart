@@ -69,9 +69,9 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                                     backgroundImage: MemoryImage(_image!),
                                   )
                                 : CircleAvatar(
-                                    radius: 45,
-                                    child:
-                                        Image.network(cubit.userModel!.name!)),
+                                    radius: 50,
+                                    backgroundImage:
+                                        NetworkImage(cubit.userModel!.image!)),
                             TextButton(
                                 onPressed: selectImage,
                                 child: const Text(

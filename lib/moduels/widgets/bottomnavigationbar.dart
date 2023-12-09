@@ -1,5 +1,6 @@
-import 'package:UReflect/moduels/view/profile_details.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -8,24 +9,24 @@ import '../view/Categories_Page.dart';
 import '../view/HomePage.dart';
 import '../view/Profile_page.dart';
 import '../view/fanorites_page.dart';
+import '../view/profile_details.dart';
 
-class Home1 extends StatefulWidget {
-  const Home1({super.key});
+class BottomNavigationbar extends StatefulWidget {
+  const BottomNavigationbar({super.key});
 
   @override
-  State<Home1> createState() => _Home1State();
+  State<BottomNavigationbar> createState() => _BottomNavigationbarState();
 }
 
-class _Home1State extends State<Home1> {
+class _BottomNavigationbarState extends State<BottomNavigationbar> {
   bool isPressed = true;
   int _currentIndex = 0;
   final List _navScreens = [
-    const MainHomeScreen(),
+    MainHomeScreen(),
     const CategoriesPage(),
     const WishlistScreen(),
     userToken != null ? const ProfileScreen() : const ProfileDetails(),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +36,6 @@ class _Home1State extends State<Home1> {
               topLeft: Radius.circular(160.0),
               topRight: Radius.circular(160.0)),
         ),
-
         child: GNav(
             selectedIndex: _currentIndex,
             gap: 8,
@@ -67,8 +67,6 @@ class _Home1State extends State<Home1> {
                   icon: isPressed ? Icons.person_outlined : Icons.person,
                   text: "Profile"),
             ]),
-
-        // ),
       ),
       body: _navScreens.elementAt(_currentIndex),
     );

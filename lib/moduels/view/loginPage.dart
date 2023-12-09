@@ -1,6 +1,5 @@
 // ignore_for_file: file_names
 
-import 'package:UReflect/moduels/widgets/bottomnavigator.dart';
 import 'package:UReflect/moduels/view/resetpassword/resetScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +10,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../services/autntication/authcubit/authcubit_cubit.dart';
 import '../../services/autntication/authcubit/authcubit_state.dart';
+import '../widgets/bottomnavigationbar.dart';
+import 'HomePage.dart';
 import 'RegisterPage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -61,8 +62,10 @@ class _LoginPageState extends State<LoginPage> {
       body: BlocConsumer<AuthCubit, AuthStates>(
         listener: (context, state) {
           if (state is LoginSuccessState) {
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const Home1()));
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const BottomNavigationbar()));
           } else if (state is FailedToLoginState) {
             showDialog(
                 context: context,
@@ -82,15 +85,6 @@ class _LoginPageState extends State<LoginPage> {
                           color: Colors.white,
                         ),
                       ),
-                      // title: Positioned(
-                      //   bottom: 300,
-
-                      //   child: const Text(
-                      //     "Warning",
-                      //     style: TextStyle(
-                      //         fontSize: 15, fontWeight: FontWeight.bold),
-                      //   ),
-                      // ),
                     ));
           }
         },

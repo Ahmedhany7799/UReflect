@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../main.dart';
-import '../widgets/bottomnavigator.dart';
+import '../widgets/bottomnavigationbar.dart';
+import 'HomePage.dart';
 import 'onboardingScreens.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -67,7 +68,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     MaterialPageRoute(
                         builder: (context) => userToken == null
                             ? const OnboardingScreens()
-                            : const Home1()));
+                            : const BottomNavigationbar()));
               },
               child: Text(
                 " Let's Go",

@@ -9,7 +9,6 @@ import '../widgets/componants/detailedproduct.dart';
 import '../widgets/componants/itemCard.dart';
 import '../widgets/componants/product_model.dart';
 import 'HomePage.dart';
-import '../widgets/bottomnavigator.dart';
 
 class SearchPage2 extends StatefulWidget {
   const SearchPage2({super.key});
@@ -37,7 +36,7 @@ class _SearchPage2State extends State<SearchPage2> {
           centerTitle: true,
           leading: IconButton(
               onPressed: () => Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const Home1())),
+                  MaterialPageRoute(builder: (context) => MainHomeScreen())),
               icon: const Icon(Icons.arrow_back_ios)),
         ),
         body: SingleChildScrollView(

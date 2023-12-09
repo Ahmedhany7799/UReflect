@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:UReflect/moduels/widgets/bottomnavigationbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,8 +10,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../services/autntication/authcubit/authcubit_cubit.dart';
 import '../../services/autntication/authcubit/authcubit_state.dart';
+import 'HomePage.dart';
 import 'loginPage.dart';
-import '../widgets/bottomnavigator.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -46,7 +47,9 @@ class _RegisterPageState extends State<RegisterPage> {
     return BlocConsumer<AuthCubit, AuthStates>(listener: (context, state) {
       if (state is RegisterLoadingState) {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => const Home1()));
+            context,
+            MaterialPageRoute(
+                builder: (context) => const BottomNavigationbar()));
       } else if (state is FailedToRegisterState) {
         showDialog(
             context: context,
