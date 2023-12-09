@@ -111,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                             //   height: 60,
                             // ),
                             Text(
-                              "Reflect",
+                              "UReflect",
                               style: TextStyle(
                                   fontSize: 40.sp,
                                   fontWeight: FontWeight.bold,

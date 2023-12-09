@@ -1,6 +1,3 @@
-import 'package:lottie/lottie.dart';
-
-import 'moduels/view/WelcomeLoginPage.dart';
 import 'services/autntication/authcubit/authcubit_cubit.dart';
 import 'services/layout/layout_cubit/layout_cubit.dart';
 import 'services/sharedprefernces/Cachedata.dart';
@@ -86,11 +83,12 @@ class _MyAppState extends State<MyApp> {
                       duration: 4000,
                       splashIconSize: 400,
                       splash: Image.asset(
-                        "assets/user.png",
-                        fit: BoxFit.cover,
-                        height: 400.h,
+                        "assets/logo.jpg",
+                        fit: BoxFit.fitWidth,
+                        height: 300.h,
+                        //width: 00.w,
                       ),
-                      nextScreen: const WelcomeLogin(),
+                      nextScreen: const WelcomePage(),
                       splashTransition: SplashTransition.fadeTransition,
                     ),
                   ),

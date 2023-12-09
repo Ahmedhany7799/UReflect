@@ -59,8 +59,8 @@ dependencies:
   #flutter_stripe: ^9.5.0+1
   pin_code_fields: ^8.0.1
   flutter_screenutil: ^5.0.1
-  lottie: ^2.3.2
-  alan_voice: ^4.4.0
+  #alan_voice: ^4.4.0
+  flutter_launcher_icons: "^0.13.1"
 
 
 
@@ -70,6 +70,13 @@ dependencies:
 
 
 
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/logo.jpg"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  
 
 dev_dependencies:
   flutter_test:

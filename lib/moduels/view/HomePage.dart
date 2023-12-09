@@ -39,7 +39,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
             //   height: 35,
             // ),
             Text(
-              "Reflect",
+              "UReflect",
               style: TextStyle(
                   fontSize: 30.sp,
                   fontWeight: FontWeight.bold,
@@ -133,15 +133,15 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                       ),
                     ),
                   ),
-                  IconButton(
-                    onPressed: () {
+                  GestureDetector(
+                    onTap: () {
                       showModalBottomSheet(
                           context: context,
                           builder: (BuildContext context) {
                             return SizedBox(
                               height: 700.h,
                               child: Padding(
-                                padding: const EdgeInsets.all(20.0),
+                                padding: const EdgeInsets.all(15.0),
                                 child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -153,9 +153,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                                           fontSize: 30.sp,
                                         ),
                                       ),
-                                      SizedBox(
-                                        height: 10.h,
-                                      ),
+
                                       Text(
                                         "Categories",
                                         style: TextStyle(
@@ -246,9 +244,25 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                             );
                           });
                     },
-                    icon: const Icon(Icons.sort),
-                    iconSize: 35,
+                    child: Container(
+                      width: 55,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage("assets/filter.png"),
+                        ),
+                        //color: const Color.fromRGBO(10, 207, 131, 1),
+                      ),
+                    ),
                   ),
+                  // IconButton(
+                  //   onPressed: () {
+
+                  //   },
+                  //   icon:Icon(Icons.sort),
+                  //   iconSize: 35,
+                  // ),
                 ],
               ),
               SizedBox(

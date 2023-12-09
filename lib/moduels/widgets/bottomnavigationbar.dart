@@ -22,10 +22,10 @@ class _BottomNavigationbarState extends State<BottomNavigationbar> {
   bool isPressed = true;
   int _currentIndex = 0;
   final List _navScreens = [
-    MainHomeScreen(),
+    const MainHomeScreen(),
     const CategoriesPage(),
     const WishlistScreen(),
-    userToken != null ? const ProfileScreen() : const ProfileDetails(),
+    userToken == null ? const ProfileScreen() : const ProfileDetails(),
   ];
   @override
   Widget build(BuildContext context) {
