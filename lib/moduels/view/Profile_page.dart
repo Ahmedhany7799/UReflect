@@ -1,14 +1,11 @@
-// ignore_for_file: file_names
-
-import 'package:UReflect/moduels/view/profile_details.dart';
+import 'RegisterPage.dart';
+import 'profile_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../services/layout/layout_cubit/layout_cubit.dart';
 import '../../services/layout/layout_cubit/layout_states.dart';
 import '../../main.dart';
-import 'RegisterPage.dart';
 import 'loginPage.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -83,7 +80,7 @@ class ProfileScreen extends StatelessWidget {
                                                           const RegisterPage()));
                                             },
                                             child: Container(
-                                              width: 100.w,
+                                              width: 180.w,
                                               height: 35.h,
                                               decoration: BoxDecoration(
                                                 borderRadius:

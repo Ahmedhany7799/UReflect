@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import '../../../models/model_product.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import 'RoundedImage.dart';
-import 'product_model.dart';
 
 class ProductTitleWithImage extends StatefulWidget {
-  const ProductTitleWithImage({super.key, required this.product});
+  const ProductTitleWithImage({super.key, required this.model});
 
-  final Product product;
+  //final Product product;
+  final ProductModel model;
 
   @override
   State<ProductTitleWithImage> createState() => _ProductTitleWithImageState();
@@ -25,23 +25,24 @@ class _ProductTitleWithImageState extends State<ProductTitleWithImage> {
           children: [
             Positioned(
               right: 20.w,
-              bottom: 620.h,
+              bottom: 720.h,
               left: 100.w,
               child: SizedBox(
-                height: 70.h,
+                height: 40.h,
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
-                  itemBuilder: (_, index) => RoundedImage(
-                    imageUrl: "assets/products/leather_jacket_2.png",
-                    width: 80.w,
-                    height: 200.h,
-                    backgroundColor: THelperFunctions.isDarkMode(context)
-                        ? TColors.dark
-                        : TColors.dark,
-                    border: Border.all(color: Colors.blueGrey),
-                    borderRadius: 20,
-                    padding: const EdgeInsets.all(4),
+                  itemBuilder: (_, index) => Container(
+                    height: 40.h,
+                    width: 40.w,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.grey.shade300,
+                      image: DecorationImage(
+                        image: NetworkImage(widget.model.image.toString()),
+                      ),
+                      //color: const Color.fromRGBO(10, 207, 131, 1),
+                    ),
                   ),
                   itemCount: 4,
                   separatorBuilder: (BuildContext context, int index) =>
@@ -55,7 +56,7 @@ class _ProductTitleWithImageState extends State<ProductTitleWithImage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  widget.product.title,
+                  widget.model.name!,
                   style: TextStyle(
                       fontSize: 30.sp,
                       color: Colors.black,
@@ -71,7 +72,7 @@ class _ProductTitleWithImageState extends State<ProductTitleWithImage> {
                               text: "Price: \n ",
                               style: TextStyle(color: Colors.black)),
                           TextSpan(
-                            text: "\$${widget.product.price}",
+                            text: "\$${widget.model.price}",
                             style: Theme.of(context)
                                 .textTheme
                                 .headlineSmall!
@@ -85,9 +86,9 @@ class _ProductTitleWithImageState extends State<ProductTitleWithImage> {
                     SizedBox(width: 20.w),
                     Expanded(
                       child: Hero(
-                        tag: "${widget.product.id}",
-                        child: Image.asset(
-                          widget.product.image,
+                        tag: "${widget.model.id}",
+                        child: Image.network(
+                          widget.model.image.toString(),
                           fit: BoxFit.fill,
                         ),
                       ),

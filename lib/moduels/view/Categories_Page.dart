@@ -31,13 +31,18 @@ class _CategoriesPageState extends State<CategoriesPage> {
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 25.sp,
+                              fontFamily: "ProtestRiot-Regular.ttf",
                               fontWeight: FontWeight.bold))),
-                  IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.shopping_cart,
-                        color: Colors.black,
-                      ))
+                  // IconButton(
+                  //     onPressed: () =>
+                  //     // Navigator.pushReplacement(
+                  //     //     context,
+                  //     //     MaterialPageRoute(
+                  //     //         builder: (context) => const CartScreen())),
+                  //     icon: const Icon(
+                  //       Icons.shopping_cart,
+                  //       color: Colors.black,
+                  //     ))
                 ],
               ),
 

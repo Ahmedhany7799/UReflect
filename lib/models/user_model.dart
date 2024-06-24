@@ -7,7 +7,15 @@ class UserModel {
   List<Address>? addresses;
   String? address;
   // Constructor
-  UserModel(this.name, this.email, this.secondphone, this.phone, this.image,this.addresses, this.address,);
+  UserModel(
+    this.name,
+    this.email,
+    this.secondphone,
+    this.phone,
+    this.image,
+    this.addresses,
+    this.address,
+  );
 
   // Named constructor
   UserModel.fromJson({required Map<String, dynamic> data}) {
@@ -17,7 +25,8 @@ class UserModel {
     phone = data["mobile_number1"];
     image = data["image_profile"].toString();
     secondphone = data["mobile_number2"];
-    addresses: List<Address>.from(data["addresses"].map((x) => Address.fromJson(x)));
+    // addresses:
+    // List<Address>.from(data["addresses"].map((x) => Address.fromJson(x)));
   }
 
   // To Map
@@ -33,7 +42,6 @@ class UserModel {
   }
 }
 
-
 class Address {
   String streetAddress;
   String city;
@@ -46,32 +54,17 @@ class Address {
   });
 
   factory Address.fromJson(Map<String, dynamic> json) => Address(
-    streetAddress: json["street_address"],
-    city: json["city"],
-    state: json["state"],
-  );
+        streetAddress: json["street_address"],
+        city: json["city"],
+        state: json["state"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "street_address": streetAddress,
-    "city": city,
-    "state": state,
-  };
+        "street_address": streetAddress,
+        "city": city,
+        "state": state,
+      };
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // class UserModel {
 //   String? name;
@@ -114,11 +107,9 @@ class Address {
 // }
 //
 
-
 // // To parse this JSON data, do
 
 // //     final userModel = userModelFromJson(jsonString);
-
 
 // // UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
 
@@ -140,8 +131,6 @@ class Address {
 // //     required this.mobileNumber2,
 // //     required this.addresses,
 // //   });
-
-
 
 // //   Map<String, dynamic> toJson() => {
 // //         "name": name,
@@ -176,3 +165,26 @@ class Address {
 // //         "state": state,
 // //       };
 // // }
+
+class AiModel {
+  String? image;
+
+  // Constructor
+  AiModel(
+    this.image,
+  );
+
+  // Named constructor
+  AiModel.fromJson({required Map<String, dynamic> data}) {
+    // Refactoring Map | Json
+
+    image = data["image_profile"].toString();
+  }
+
+  // To Map
+  Map<String, dynamic> toMap() {
+    return {
+      "image_profile": image,
+    };
+  }
+}

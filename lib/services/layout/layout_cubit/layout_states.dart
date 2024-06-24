@@ -11,13 +11,13 @@ class FailedToGetUserDataState extends LayoutStates {
   FailedToGetUserDataState({required this.message, required error});
 }
 
-// class GetFavoritesSuccessState extends LayoutStates {}
+class GetFavoritesSuccessState extends LayoutStates {}
 
-// class FailedToGetFavoritesState extends LayoutStates {}
+class FailedToGetFavoritesState extends LayoutStates {}
 
-// class AddOrRemoveItemFromFavoritesSuccessState extends LayoutStates {}
+class AddOrRemoveItemFromFavoritesSuccessState extends LayoutStates {}
 
-// class FailedToAddOrRemoveItemFromFavoritesState extends LayoutStates {}
+class FailedToAddOrRemoveItemFromFavoritesState extends LayoutStates {}
 
 // class GetBannersLoadingState extends LayoutStates {}
 
@@ -29,15 +29,19 @@ class FailedToGetUserDataState extends LayoutStates {
 
 // class FailedToGetCategoriesState extends LayoutStates {}
 
-// class GetProductsSuccessState extends LayoutStates {}
+class GetProductsSuccessState extends LayoutStates {}
 
-// class FailedToGetProductsState extends LayoutStates {}
+class FailedToGetProductsState extends LayoutStates {}
 
-// class FilterProductsSuccessState extends LayoutStates {}
+class AddOrRemoveItemFromCartsSuccessState extends LayoutStates {}
 
-// class GetCartsSuccessState extends LayoutStates {}
+class FailedToAddOrRemoveItemFromCartsState extends LayoutStates {}
 
-// class FailedToGetCartsState extends LayoutStates {}
+class FilterProductsSuccessState extends LayoutStates {}
+
+class GetCartsSuccessState extends LayoutStates {}
+
+class FailedToGetCartsState extends LayoutStates {}
 
 // class ChangePasswordLoadingState extends LayoutStates {}
 

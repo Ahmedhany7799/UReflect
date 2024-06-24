@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 import '../../main.dart';
@@ -24,7 +21,7 @@ class _BottomNavigationbarState extends State<BottomNavigationbar> {
   final List _navScreens = [
     const MainHomeScreen(),
     const CategoriesPage(),
-    const WishlistScreen(),
+    const FavoritesScreen(),
     userToken == null ? const ProfileScreen() : const ProfileDetails(),
   ];
   @override
@@ -56,9 +53,8 @@ class _BottomNavigationbarState extends State<BottomNavigationbar> {
                 onPressed: () {},
               ),
               GButton(
-                  icon: isPressed
-                      ? Icons.category_outlined
-                      : FontAwesomeIcons.cartShopping,
+                  icon:
+                      isPressed ? Icons.category_outlined : Icons.shopping_bag,
                   text: "Categories"),
               GButton(
                   icon: isPressed ? Icons.favorite_border : Icons.favorite,

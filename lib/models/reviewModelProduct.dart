@@ -1,82 +1,42 @@
 // ignore_for_file: file_names
 
 class RatingReviewmodel {
-  final String name, comment, img, date;
+  final String name, comment, img, date, vendorDate;
   final double rating;
 
-  RatingReviewmodel(
-      {required this.date,
-      required this.rating,
-      required this.name,
-      required this.comment,
-      required this.img});
+  RatingReviewmodel({
+    required this.date,
+    required this.rating,
+    required this.name,
+    required this.comment,
+    required this.img,
+    required this.vendorDate,
+  });
 }
 
 List<RatingReviewmodel> reviews = [
   RatingReviewmodel(
-      comment:
-          'El montag mia el mia bs yaa reet ybcaa  fy aloan tania .Well done!',
-      img: "assets/Screenshot_2023-11-03_235241-removebg-preview.png",
-      name: 'Abo Ayman',
-      rating: 4,
-      date: '04 Nov, 2023'),
+    comment: 'good',
+    img: "assets/reviews/rev2.jpeg",
+    name: 'Ahmed Hany',
+    rating: 4,
+    date: '29 June, 2024',
+    vendorDate: '30 June, 2024',
+  ),
+  RatingReviewmodel(
+    comment: 'very good',
+    img: "assets/reviews/rev1.jpg",
+    name: 'Nour',
+    rating: 3,
+    date: '21 May, 2024',
+    vendorDate: '25 May, 2024',
+  ),
   RatingReviewmodel(
       comment:
           'El montag mia el mia bs yaa reet ybcaa  fy aloan tania .Well done!',
-      img: "assets/OIP-removebg-preview.png",
-      name: 'كروان مشاكل',
-      rating: 3,
-      date: '01 Nov, 2023'),
-  RatingReviewmodel(
-      comment:
-          'El montag mia el mia bs yaa reet ybcaa  fy aloan tania .Well done!',
-      img:
-          "assets/293191926_3194015350833391_919019878836629539_n-removebg-preview.png",
-      name: 'Me',
+      img: "assets/reviews/rev3.jpeg",
+      name: 'Jhon',
       rating: 5,
-      date: '31 Oct, 2023'),
-  RatingReviewmodel(
-      comment:
-          'El montag mia el mia bs yaa reet ybcaa  fy aloan tania .Well done!',
-      img: "assets/Screenshot_2023-11-03_235241-removebg-preview.png",
-      name: 'Abo Ayman',
-      rating: 4,
-      date: '04 Nov, 2023'),
-  RatingReviewmodel(
-      comment:
-          'El montag mia el mia bs yaa reet ybcaa  fy aloan tania .Well done!',
-      img: "assets/OIP-removebg-preview.png",
-      name: 'كروان مشاكل',
-      rating: 3,
-      date: '01 Nov, 2023'),
-  RatingReviewmodel(
-      comment:
-          'El montag mia el mia bs yaa reet ybcaa  fy aloan tania .Well done!',
-      img:
-          "assets/293191926_3194015350833391_919019878836629539_n-removebg-preview.png",
-      name: 'Me',
-      rating: 5,
-      date: '31 Oct, 2023'),
-  RatingReviewmodel(
-      comment:
-          'El montag mia el mia bs yaa reet ybcaa  fy aloan tania .Well done!',
-      img: "assets/Screenshot_2023-11-03_235241-removebg-preview.png",
-      name: 'Abo Ayman',
-      rating: 4,
-      date: '04 Nov, 2023'),
-  RatingReviewmodel(
-      comment:
-          'El montag mia el mia bs yaa reet ybcaa  fy aloan tania .Well done!',
-      img: "assets/OIP-removebg-preview.png",
-      name: 'كروان مشاكل',
-      rating: 3,
-      date: '01 Nov, 2023'),
-  RatingReviewmodel(
-      comment:
-          'El montag mia el mia bs yaa reet ybcaa  fy aloan tania .Well done!',
-      img:
-          "assets/293191926_3194015350833391_919019878836629539_n-removebg-preview.png",
-      name: 'Me',
-      rating: 5,
-      date: '31 Oct, 2023'),
+      date: '31 Oct, 2023',
+      vendorDate: '2 Nov, 2023'),
 ];

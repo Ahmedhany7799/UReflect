@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import '../widgets/bottomnavigationbar.dart';
-import 'HomePage.dart';
 import 'onBoarding_controller.dart';
 
 class OnboardingScreens extends StatefulWidget {
@@ -45,21 +43,21 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
             ],
           ),
           Positioned(
-              right: 20,
-              top: 60,
+              right: 20.w,
+              top: 60.h,
               child: TextButton(
                   onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => const BottomNavigationbar())),
-                  child: const Text(
+                  child: Text(
                     "Skip",
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(color: Colors.black, fontSize: 20.sp),
                   ))),
-          const Positioned(left: 20, bottom: 60, child: DotIndicator()),
+          Positioned(left: 20.w, bottom: 60.h, child: const DotIndicator()),
           Positioned(
-            right: 20,
-            bottom: 40,
+            right: 20.w,
+            bottom: 40.h,
             child: ElevatedButton(
               onPressed: () => OnBoardingController.instance.nextPage(),
               style: ElevatedButton.styleFrom(
@@ -111,11 +109,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.all(20.r),
       child: Column(
         children: [
           SizedBox(
-            height: 60.h,
+            height: 90.h,
           ),
           Image(height: 300.h, width: 400.w, image: AssetImage(widget.image)),
           Text(

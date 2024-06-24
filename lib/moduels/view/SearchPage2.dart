@@ -1,13 +1,15 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../services/layout/layout_cubit/layout_cubit.dart';
+import '../../services/layout/layout_cubit/layout_states.dart';
+import '../widgets/bottomnavigationbar.dart';
 import '../widgets/componants/categories.dart';
-import '../widgets/componants/detailedproduct.dart';
-import '../widgets/componants/itemCard.dart';
-import '../widgets/componants/product_model.dart';
 import 'HomePage.dart';
 
 class SearchPage2 extends StatefulWidget {
@@ -23,214 +25,243 @@ class _SearchPage2State extends State<SearchPage2> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "Search",
-            style: TextStyle(
-                fontSize: 30.sp,
-                fontWeight: FontWeight.bold,
-                color: const Color.fromRGBO(10, 207, 131, 1)),
-          ),
-          centerTitle: true,
-          leading: IconButton(
-              onPressed: () => Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => MainHomeScreen())),
-              icon: const Icon(Icons.arrow_back_ios)),
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 10.h,
-                ),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 310.w,
-                      child: const TSearchContainer(
-                        text: "Search yaa bashaa...",
-                        enabled: true,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10.h,
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        showModalBottomSheet(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return SizedBox(
-                                height: 700.h,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 15),
-                                  child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "Filter",
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 30.sp,
-                                          ),
-                                        ),
+    final cubit = BlocProvider.of<LayoutCubit>(context);
 
-                                        Text(
-                                          "Categories",
-                                          style: TextStyle(
-                                              fontSize: 18.sp,
-                                              color: Colors.black),
-                                        ),
-
-                                        const Categories(),
-                                        Text('Sort by',
-                                            style: TextStyle(fontSize: 18.sp)),
-                                        SizedBox(
-                                          height: 5.h,
-                                        ),
-
-                                        const FilterChipExample(),
-
-                                        //  filt2(),
-                                        SizedBox(
-                                          height: 5.h,
-                                        ),
-
-                                        Text(
-                                          "Price Range",
-                                          style: TextStyle(
-                                              //fontWeight: FontWeight.bold,
-                                              fontSize: 20.sp,
-                                              color: Colors.black),
-                                        ),
-                                        SizedBox(
-                                          height: 5.h,
-                                        ),
-
-                                        Row(
-                                          children: [
-                                            Expanded(
-                                              child: TextFormField(
-                                                controller: intController,
-                                                decoration: InputDecoration(
-                                                  labelText: "Min Price",
-                                                  labelStyle: TextStyle(
-                                                    color: Colors.black,
-                                                    //fontWeight: FontWeight.bold,
-                                                    fontSize: 15.sp,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 8.w,
-                                            ),
-                                            Expanded(
-                                              child: TextFormField(
-                                                controller: int2Controller,
-                                                decoration: InputDecoration(
-                                                  labelText: "max Price",
-                                                  labelStyle: TextStyle(
-                                                    color: Colors.black,
-                                                    // fontWeight: FontWeight.bold,
-                                                    fontSize: 15.sp,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 5.h,
-                                        ),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(19),
-                                            color: const Color.fromRGBO(
-                                                10, 207, 131, 1),
-                                          ),
-                                          child: MaterialButton(
-                                            onPressed: () {},
-                                            minWidth: double.infinity,
-                                            child: Text(
-                                              "Apply Filter",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20.sp,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ),
-                                      ]),
-                                ),
-                              );
-                            });
-                      },
-                      icon: const Icon(Icons.sort),
-                      iconSize: 35,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Container(
-                  color: Colors.white,
-                  child: ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: MainHomeScreen.previousSearches.length,
-                      itemBuilder: (context, index) =>
-                          previousSearchitems(index)),
-                ),
-                SizedBox(
-                  height: 90.h,
-                ),
-                Text(
-                  "Popular Products",
-                  style: TextStyle(
+    return BlocConsumer<LayoutCubit, LayoutStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return SafeArea(
+          child: Scaffold(
+            appBar: AppBar(
+              title: Text(
+                "Search",
+                style: TextStyle(
+                    fontSize: 30.sp,
                     fontWeight: FontWeight.bold,
-                    fontSize: 25.sp,
-                  ),
-                ),
-                SizedBox(
-                  height: 24.h,
-                ),
-                GridView.builder(
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  //  physics: const ScrollPhysics(),
-                  itemCount: 4,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 20,
-                    crossAxisSpacing: 20,
-                    childAspectRatio: 0.82,
-                  ),
-                  itemBuilder: (context, index) => ItemCard(
-                    product: products[index],
-                    press: () => Navigator.push(
+                    fontFamily: "ProtestRiot-Regular.ttf",
+                    color: const Color.fromRGBO(10, 207, 131, 1)),
+              ),
+              centerTitle: true,
+              leading: IconButton(
+                  onPressed: () => Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => DetailsScreen(
-                          product: products[index],
+                          builder: (context) => const BottomNavigationbar())),
+                  icon: const Icon(Icons.arrow_back_ios)),
+            ),
+            body: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 310.w,
+                          child: const TSearchContainer(
+                            text: "Search yaa bashaa...",
+                            enabled: true,
+                          ),
                         ),
+                        SizedBox(
+                          width: 10.h,
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            showModalBottomSheet(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return SizedBox(
+                                    height: 510.h,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20, vertical: 15),
+                                      child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Filter",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 30.sp,
+                                              ),
+                                            ),
+
+                                            Text(
+                                              "Categories",
+                                              style: TextStyle(
+                                                  fontSize: 18.sp,
+                                                  color: Colors.black),
+                                            ),
+
+                                            const Categories(),
+                                            Text('Sort by',
+                                                style:
+                                                    TextStyle(fontSize: 18.sp)),
+                                            SizedBox(
+                                              height: 5.h,
+                                            ),
+
+                                            const FilterChipExample(),
+
+                                            //  filt2(),
+                                            SizedBox(
+                                              height: 5.h,
+                                            ),
+
+                                            Text(
+                                              "Price Range",
+                                              style: TextStyle(
+                                                  //fontWeight: FontWeight.bold,
+                                                  fontSize: 20.sp,
+                                                  color: Colors.black),
+                                            ),
+                                            SizedBox(
+                                              height: 5.h,
+                                            ),
+
+                                            Row(
+                                              children: [
+                                                Expanded(
+                                                  child: TextFormField(
+                                                    controller: intController,
+                                                    decoration: InputDecoration(
+                                                      labelText: "Min Price",
+                                                      labelStyle: TextStyle(
+                                                        color: Colors.black,
+                                                        //fontWeight: FontWeight.bold,
+                                                        fontSize: 15.sp,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 8.w,
+                                                ),
+                                                Expanded(
+                                                  child: TextFormField(
+                                                    controller: int2Controller,
+                                                    decoration: InputDecoration(
+                                                      labelText: "max Price",
+                                                      labelStyle: TextStyle(
+                                                        color: Colors.black,
+                                                        // fontWeight: FontWeight.bold,
+                                                        fontSize: 15.sp,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 5.h,
+                                            ),
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(19),
+                                                color: const Color.fromRGBO(
+                                                    10, 207, 131, 1),
+                                              ),
+                                              child: MaterialButton(
+                                                onPressed: () {},
+                                                minWidth: double.infinity,
+                                                child: Text(
+                                                  "Apply Filter",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 20.sp,
+                                                      color: Colors.white),
+                                                ),
+                                              ),
+                                            ),
+                                          ]),
+                                    ),
+                                  );
+                                });
+                          },
+                          icon: Container(
+                            width: 60.w,
+                            height: 37.h,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              // color: const Color.fromRGBO(10, 207, 131, 1),
+                            ),
+                            child: SvgPicture.asset(
+                              "assets/filter.svg",
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Container(
+                      color: Colors.white,
+                      child: ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: MainHomeScreen.previousSearches.length,
+                          itemBuilder: (context, index) =>
+                              previousSearchitems(index)),
+                    ),
+                    SizedBox(
+                      height: 90.h,
+                    ),
+                    Text(
+                      "Popular Products",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25.sp,
                       ),
                     ),
-                  ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.all(20.0),
+                    //   child: GridView.builder(
+                    //     scrollDirection: Axis.vertical,
+                    //     shrinkWrap: true,
+                    //     physics: NeverScrollableScrollPhysics(),
+                    //     itemCount: 4,
+                    //     gridDelegate:
+                    //         const SliverGridDelegateWithFixedCrossAxisCount(
+                    //       crossAxisCount: 2,
+                    //       mainAxisSpacing: 20,
+                    //       crossAxisSpacing: 20,
+                    //       childAspectRatio: 0.75,
+                    //     ),
+                    //     itemBuilder: (context, index) => ItemCard(
+                    //       model: cubit.filteredProducts.isEmpty
+                    //           ? cubit.products[index]
+                    //           : cubit.filteredProducts[index],
+                    //       press: () => Navigator.push(
+                    //         context,
+                    //         MaterialPageRoute(
+                    //           builder: (context) => DetailsScreen(
+                    //             model: cubit.filteredProducts.isEmpty
+                    //                 ? cubit.products[index]
+                    //                 : cubit.filteredProducts[index],
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
@@ -272,7 +303,8 @@ class _SearchPage2State extends State<SearchPage2> {
   }
 }
 
-enum SortByFilter { children, men, women, highPrice, lowPrice }
+// ignore: constant_identifier_names
+enum SortByFilter { Children, Men, Women, HighPrice, LowPrice }
 
 enum SortByFilter2 { children, men, women, highPrice, lowPrice }
 

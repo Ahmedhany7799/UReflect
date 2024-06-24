@@ -1,11 +1,14 @@
+import 'Features/checkout/presentation/views/my_cart_view.dart';
+import 'Features/checkout/presentation/views/payment_details.dart';
+import 'moduels/view/loginPage.dart';
+import 'services/services.dart';
+import 'moduels/widgets/bottomnavigationbar.dart';
 import 'services/autntication/authcubit/authcubit_cubit.dart';
 import 'services/layout/layout_cubit/layout_cubit.dart';
 import 'services/sharedprefernces/Cachedata.dart';
 import 'services/sharedprefernces/bloc_observer.dart';
 import 'utils/theme/theme.dart';
-import 'moduels/view/welcome.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,6 +18,7 @@ String? userToken;
 String? currentPassword;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initialServices();
   Bloc.observer = MyBlocObserver();
   await CacheNetwork.cacheInitialization();
   userToken = await CacheNetwork.getCacheData(key: 'token');
@@ -32,39 +36,15 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // _MyAppState() {
-  //   _initAlanButton();
-  // }
-
-  // void _initAlanButton() {
-  //   AlanVoice.addButton(
-  //       "314203787ccd9370974f1bf6b6929c1b2e956eca572e1d8b807a3e2338fdd0dc/prod");
-  //   AlanVoice.onCommand.add((command) {
-  //     debugPrint("got new command ${command.toString()}");
-  //     var commandName = command.data["command"] ?? "";
-  //     if (commandName == "showAlert") {
-  //       /// handle command "showAlert"
-  //     }
-  //   });
-
-  //   AlanVoice.onEvent.add((event) {
-  //     debugPrint("got new event ${event.data.toString()}");
-  //   });
-
-  //   AlanVoice.onButtonState.add((state) {
-  //     debugPrint("got new button state ${state.name}");
-  //   });
-  // }
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => AuthCubit()),
           BlocProvider(
-            create: (context) => LayoutCubit(),
-          ),
+              create: (context) => LayoutCubit()
+                ..getProducts()
+                ..getCarts()),
         ],
         child: ScreenUtilInit(
             designSize: const Size(460, 700),
@@ -83,12 +63,19 @@ class _MyAppState extends State<MyApp> {
                       duration: 4000,
                       splashIconSize: 400,
                       splash: Image.asset(
-                        "assets/logo.jpg",
+                        "assets/logoU.png",
                         fit: BoxFit.fitWidth,
                         height: 300.h,
                         //width: 00.w,
                       ),
-                      nextScreen: const WelcomePage(),
+                      nextScreen:
+                          //MyCartView()
+
+                          userToken != null
+                              ? const LoginPage()
+                              :
+                              //const PaymentDetailsView(),
+                              const BottomNavigationbar(),
                       splashTransition: SplashTransition.fadeTransition,
                     ),
                   ),

@@ -1,16 +1,14 @@
 // ignore_for_file: file_names
 
-import 'package:UReflect/moduels/widgets/bottomnavigationbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../services/autntication/authcubit/authcubit_cubit.dart';
 import '../../services/autntication/authcubit/authcubit_state.dart';
-import 'HomePage.dart';
+import '../widgets/bottomnavigationbar.dart';
 import 'loginPage.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -79,7 +77,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   Text(
                     "Sign Up",
                     style: TextStyle(
-                        fontSize: 22.5.sp, fontWeight: FontWeight.bold),
+                      fontSize: 25.sp,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "ProtestRiot-Regular.ttf",
+                    ),
                   ),
                   SizedBox(
                     height: 30.h,

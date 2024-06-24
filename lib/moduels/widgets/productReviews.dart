@@ -3,10 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../models/reviewModelProduct.dart';
 import '../../utils/constants/sizes.dart';
-import 'UserReviewCard.dart';
 
 class Productreviews extends StatelessWidget {
   const Productreviews({super.key});
@@ -47,29 +44,26 @@ class Productreviews extends StatelessWidget {
               height: 16.h,
             ),
             const OverallProductrating(),
-            const RatingbarIdnticator(
-              rating: 4.8,
-            ),
+            // const RatingbarIdnticator(
+            //  // rating: 4.8,
+            // ),
             Text(
               "12.611",
               style: Theme.of(context).textTheme.bodySmall,
             ),
             SizedBox(
-              height: 32.h,
+              height: 28.h,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: ListView.builder(
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                //  physics: const ScrollPhysics(),
-                itemCount: reviews.length,
-
-                itemBuilder: (context, index) => UserReview(
-                  review: reviews[index],
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.symmetric(horizontal: 20.w),
+            //   child: ListView.builder(
+            //     scrollDirection: Axis.vertical,
+            //     shrinkWrap: true,
+            //     physics: const NeverScrollableScrollPhysics(),
+            //     itemCount: reviews.length,
+            //     itemBuilder: (context, index) => UserReview( ),
+            //   ),
+            // ),
           ]),
         ),
       ),
@@ -82,11 +76,11 @@ class RatingbarIdnticator extends StatelessWidget {
     super.key,
     required this.rating,
   });
-  final double rating;
+  final int rating;
   @override
   Widget build(BuildContext context) {
     return RatingBarIndicator(
-      rating: rating,
+      // rating: rating,
       itemSize: 20,
       unratedColor: Colors.grey,
       itemBuilder: (BuildContext context, int index) => const Icon(
@@ -112,10 +106,10 @@ class OverallProductrating extends StatelessWidget {
               '4.8',
               style: Theme.of(context).textTheme.displayLarge,
             )),
-        Expanded(
+        const Expanded(
           flex: 7,
           child: Column(
-            children: const [
+            children: [
               RatingProgressIndicator(
                 text: '5',
                 value: 1.0,

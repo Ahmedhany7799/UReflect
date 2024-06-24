@@ -1,17 +1,16 @@
-// ignore_for_file: file_names
-
-import 'package:UReflect/moduels/view/resetpassword/resetScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ureflect/moduels/view/registerVendor.dart';
+import 'package:ureflect/moduels/view/resetpassword/resetScreen.dart';
+import 'package:ureflect/moduels/widgets/ChooseRegister.dart';
 
 import '../../services/autntication/authcubit/authcubit_cubit.dart';
 import '../../services/autntication/authcubit/authcubit_state.dart';
 import '../widgets/bottomnavigationbar.dart';
-import 'HomePage.dart';
 import 'RegisterPage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -105,11 +104,6 @@ class _LoginPageState extends State<LoginPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // Image(
-                            //   image: AssetImage("assets/logo.png"),
-                            //   width: 60,
-                            //   height: 60,
-                            // ),
                             Text(
                               "UReflect",
                               style: TextStyle(
@@ -120,18 +114,6 @@ class _LoginPageState extends State<LoginPage> {
                           ],
                         ),
 
-                        SizedBox(
-                          height: 20.h,
-                        ),
-
-                        //                         const Text(
-                        //   "Sign IN",
-                        //   style: TextStyle(
-                        //     fontSize: 25,
-                        //     fontWeight: FontWeight.bold,
-                        //     color: Color.fromRGBO(0, 101, 111, 1),
-                        //   ),
-                        // ),
                         SizedBox(
                           height: 30.h,
                         ),
@@ -295,7 +277,7 @@ class _LoginPageState extends State<LoginPage> {
                               minWidth: double.infinity,
                               child: Text(
                                 state is LoginLoadingState
-                                    ? ".....اهدا ي  باشاا"
+                                    ? "loading"
                                     : "Sign In",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -322,7 +304,7 @@ class _LoginPageState extends State<LoginPage> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const RegisterPage()));
+                                              const RegisterChoose()));
                                 },
                                 child: Text(
                                   "Sign Up here",

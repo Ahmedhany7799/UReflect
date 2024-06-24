@@ -1,15 +1,13 @@
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../../services/layout/layout_cubit/layout_cubit.dart';
 import '../../services/layout/layout_cubit/layout_states.dart';
 import '../../utils/constants/image_strings.dart';
 import '../../utils/constants/sizes.dart';
-import 'HomePage.dart';
 
 class ProfileDetails extends StatefulWidget {
   const ProfileDetails({super.key});
@@ -29,6 +27,7 @@ class _ProfileDetailsState extends State<ProfileDetails> {
 
   @override
   Widget build(BuildContext context) {
+    LogoutController controller = Get.put(LogoutController());
     return BlocConsumer<LayoutCubit, LayoutStates>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -164,7 +163,9 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                             ),
                             Center(
                               child: TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    controller.logout();
+                                  },
                                   child: const Text(
                                     "Close Account",
                                     style: TextStyle(color: Colors.red),

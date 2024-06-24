@@ -1,10 +1,8 @@
 import 'dart:convert';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
-
 import '../../../main.dart';
 import '../../sharedprefernces/Cachedata.dart';
 import 'authcubit_state.dart';
@@ -12,8 +10,8 @@ import 'authcubit_state.dart';
 class AuthCubit extends Cubit<AuthStates> {
   AuthCubit() : super(AuthInitialState());
 
-  // Todo: API URL => https://student.valuxapps.com/api/
-  // Todo: Register endpoint => register
+  //--------register----------------------------------------------------
+
   void register(
       {required String email,
       required String name,
@@ -22,9 +20,7 @@ class AuthCubit extends Cubit<AuthStates> {
     emit(RegisterLoadingState());
     try {
       Response response = await http.post(
-        // request Url = base url + method url ( endpoint ) = https://student.valuxapps.com + /api/register
         Uri.parse('https://unified-firmly-walleye.ngrok-free.app/api/register'),
-
         body: {
           'name': name,
           'email': email,
@@ -32,13 +28,11 @@ class AuthCubit extends Cubit<AuthStates> {
           'phone': phone,
         },
       );
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         var data = jsonDecode(response.body);
-        if (data["status"] == 200) {
-          // debugPrint("Response is : $data");
+        if (data["status"] == 201) {
           emit(RegisterSuccessState());
         } else {
-          // debugPrint("Response is : $data");
           emit(FailedToRegisterState(message: data['message']));
         }
       }
@@ -48,15 +42,13 @@ class AuthCubit extends Cubit<AuthStates> {
     }
   }
 
-  // Todo: API URL => https://student.valuxapps.com/api/
-  // Todo: Login endpoint => login
+  //--------Login----------------------------------------------------
+
   void login({required String email, required String password}) async {
     emit(LoginLoadingState());
     try {
       Response response = await http.post(
-        // request Url = base url + method url ( endpoint ) = https://student.valuxapps.com + /api/register
         Uri.parse('https://unified-firmly-walleye.ngrok-free.app/api/login'),
-
         body: {
           "email": email,
           "password": password,

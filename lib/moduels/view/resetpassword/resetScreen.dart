@@ -1,9 +1,9 @@
 // ignore_for_file: file_names
 
-import 'package:UReflect/moduels/view/resetpassword/verification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ureflect/moduels/view/resetpassword/verification.dart';
 
 import '../../../services/autntication/authcubit/authcubit_cubit.dart';
 
